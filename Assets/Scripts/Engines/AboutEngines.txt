@@ -1,0 +1,4 @@
+Engines are self-contained scripts or sets of scripts that are designed to
+work right off the bat. You should be able to drop them into your game and they just work.
+Serializable fields are also fine. Engines should not persist between scenes, otherwise they
+will have invalid fields due to things not existing etc.

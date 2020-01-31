@@ -1,0 +1,50 @@
+#######################################
+At the start of each script write this:
+#######################################
+// Project:         TwinstickChrisClayden
+// Date created:	
+// Date revised:	
+// Original Author: 
+// Contributors: <- only necessary once someone else bug fixes etc
+// Notes: <- if you need to add anything else!
+
+Before each class name write a short summary of what the script does
+e.g.
+
+// This script does nothing :D
+public class Hello : Monobehaviour
+
+##################
+Naming conventions
+##################
+Start global variables with an underscore _
+add type initial after that in lowercase:
+Const variables should follow the above convention and but have the name in uppercase:
+const int _iOURINT = 1;
+
+Arrays should follow the following convention:
+
+int[] _arr_i_spawnPoints; // where arr = array and i = type
+
+Methods have capital letter at start
+
+Keep public scope to a minimum with variables. Use protected if need be (if need to communicate with subclasses)
+int _iANumber;
+
+void Hi()
+{
+    double dMaMayne;
+}
+
+################
+Quality of life
+################
+
+[Header] – Gives sections of your code titles
+[Space] – Provides some spacing in the Inspector
+[HideInInspector] – Hides section of code from Inspector
+[SerializeField] – Allows private variables to become visible in the inspector
+[Tooltip] – Provides a description of the variable in the Inspector
+[Range(min,max)] – Allows you to state a min/max range on a variable
+#region- Allows you to split code up into manageable chunks
+#endregion - ends the region :D
