@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MotherSingleton<GameManager>
+public class Cat : MotherSingleton<Cat>
 {
-    public bool gameStart , inPhaseOne, freezeControls, inPhaseTwo;
+    public Transform[] fleabagLocations;
+    public int fleabagIndex;
     // Start is called before the first frame update
     void Start()
     {
-        gameStart = true;
-        inPhaseOne = false;
-        inPhaseTwo = false;
-        freezeControls = true;
+        FindNewPosition();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void FindNewPosition()
+    {
+        fleabagIndex = Random.Range(0, 5);
     }
 }

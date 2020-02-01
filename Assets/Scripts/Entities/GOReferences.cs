@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MotherSingleton<GameManager>
+public class GOReferences : MotherSingleton<GOReferences>
 {
-    public bool gameStart , inPhaseOne, freezeControls, inPhaseTwo;
+    public Transform cat;
+    public Camera mainCam;
     // Start is called before the first frame update
     void Start()
     {
-        gameStart = true;
-        inPhaseOne = false;
-        inPhaseTwo = false;
-        freezeControls = true;
+        
     }
 
     // Update is called once per frame

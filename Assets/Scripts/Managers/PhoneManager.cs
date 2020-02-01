@@ -5,12 +5,17 @@ using UnityEngine;
 public class PhoneManager : MonoBehaviour
 {
     Touch pinchFinger1, pinchFinger2;
-    float zoomSpeed = 0.2f;
+    float zoomSpeed = 3f;
     int vibrationDur = 10;
+    float pinchDistCriteria;
+    Transform cameraTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(TestVibrationDuration());
+        pinchDistCriteria = 5;
+        cameraTransform = transform;
+        //StartCoroutine(TestVibrationDuration());
     }
 
     void PinchScreen()
@@ -25,9 +30,16 @@ public class PhoneManager : MonoBehaviour
         float touchDeltaMag = (finger1.position - finger2.position).magnitude;
         float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-        Camera.main.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
-        float maxSize = Mathf.Max(Camera.main.orthographicSize, 0.1f);
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 0.1f, 5f);
+        //Camera.main.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
+        pinchDistCriteria -= deltaMagnitudeDiff * zoomSpeed;
+        if(pinchDistCriteria <= 1)
+        {
+            GameManager.Instance.inPhaseOne = false;
+            GameManager.Instance.freezeControls = true;
+            // transition
+        }
+        //float maxSize = Mathf.Max(Camera.main.orthographicSize, 0.1f);
+        //Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 0.1f, 5f);
         /*if (finger1.phase == TouchPhase.Began && finger2.phase == TouchPhase.Began)
         {
             pinchFinger1 = finger1;
@@ -48,19 +60,39 @@ public class PhoneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.inPhaseOne = false;
+            GameManager.Instance.freezeControls = true;
+        }
         if (Input.touchCount > 0)
         {
-            /*Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+            Touch touch = Input.GetTouch(0);
+            if(GameManager.Instance.gameStart)
+            {
+                
+            }
+            /*if (touch.phase == TouchPhase.Began)
             {
                 Vibration.Vibrate(20);
             }*/
-            if (Input.touchCount == 2)
+            /*if (GameManager.Instance.inPhaseOne && touch.phase == TouchPhase.Began)
             {
-
-                PinchScreen();
-            }
+                GameManager.Instance.inPhaseOne = false;
+                GameManager.Instance.freezeControls = true;
+                //PinchScreen();
+            }*/
         }
+        /*if(!GameManager.Instance.inPhaseOne && !GameManager.Instance.inPhaseTwo)
+        {
+            cameraTransform.LookAt(GOReferences.Instance.cat);
+            GOReferences.Instance.mainCam.orthographicSize -= 0.5f * zoomSpeed * Time.deltaTime;
+            if(GOReferences.Instance.mainCam.orthographicSize < 2f)
+            {
+                GOReferences.Instance.mainCam.orthographicSize = 2f;
+                GameManager.Instance.inPhaseTwo = true;
+            }
+        }*/
     }
 
     IEnumerator TestVibrationDuration()
