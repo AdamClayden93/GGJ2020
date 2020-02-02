@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Stroking : MotherSingleton<Stroking>
 {
     AudioClip[] purrArray = new AudioClip[3];
-    bool lerpCamera;
+    public bool lerpCamera;
     // Start is called before the first frame update
     void Start()
     {

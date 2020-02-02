@@ -11,4 +11,14 @@
         inPhaseTwo = false;
         freezeControls = true;
     }
+
+    public void ResetBools()
+    {
+        fadePoint = 0;
+        gameStart = true;
+        inPhaseOne = false;
+        inPhaseTwo = false;
+        freezeControls = true;
+        Stroking.Instance.lerpCamera = false;
+    }
 }

@@ -9,6 +9,13 @@ public class FadeAdjustment : MotherSingleton<FadeAdjustment>
     private readonly string fade4 = "Fade4";
     private readonly string fade5 = "Fade5";
     private readonly string fade6 = "Fade6";
+
+    private void Start()
+    {
+        fadeSprite = GetComponent<Animator>();
+        fadeSprite.SetTrigger(fade1);
+    }
+
     public void FadeToBlack()
     {
         fadeSprite.SetTrigger("FadeOut");
