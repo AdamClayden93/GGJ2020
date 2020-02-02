@@ -58,27 +58,22 @@ public class PhoneManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Instance.inPhaseOne = false;
-            GameManager.Instance.freezeControls = true;
-        }
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                Vibration.Vibrate(100);
-            }
+    //void Update()
+    //{
+        //if (Input.touchCount > 0)
+       // {
+           // Touch touch = Input.GetTouch(0);
+           // if (touch.phase == TouchPhase.Began)
+           // {
+                //Vibration.Vibrate(100);
+           // }
             /*if (GameManager.Instance.inPhaseOne && touch.phase == TouchPhase.Began)
             {
                 GameManager.Instance.inPhaseOne = false;
                 GameManager.Instance.freezeControls = true;
                 //PinchScreen();
             }*/
-        }
+       //}
         /*if(!GameManager.Instance.inPhaseOne && !GameManager.Instance.inPhaseTwo)
         {
             cameraTransform.LookAt(GOReferences.Instance.cat);
@@ -89,13 +84,5 @@ public class PhoneManager : MonoBehaviour
                 GameManager.Instance.inPhaseTwo = true;
             }
         }*/
-    }
-
-    IEnumerator TestVibrationDuration()
-    {
-        Vibration.Vibrate(vibrationDur);
-        yield return new WaitForSeconds(3);
-        vibrationDur += 10;
-        StartCoroutine(TestVibrationDuration());
-    }
+    //}
 }

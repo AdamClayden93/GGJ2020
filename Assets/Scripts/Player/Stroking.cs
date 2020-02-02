@@ -1,17 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Stroking : MotherSingleton<Stroking>
 {
     AudioClip[] purrArray = new AudioClip[3];
     bool lerpCamera;
-    Vector3 newPos;
     // Start is called before the first frame update
     void Start()
     {
-        newPos = new Vector3(40.69f, 0, 0);
+        switch (GameManager.Instance.catDeterioration)
+        {
+            case 2:
+                MeowManager.Instance.cLCat = MeowManager.Instance.chCat;
+                break;
+            case 4:
+                MeowManager.Instance.cLCat = MeowManager.Instance.cdCat;
+                break;
+            default:
+                MeowManager.Instance.cLCat = MeowManager.Instance.cLCat;
+                break;
+        }
         lerpCamera = false;
     }
 
@@ -29,11 +37,13 @@ public class Stroking : MotherSingleton<Stroking>
                 {
                     if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
                     {
+                        GameManager.Instance.catDeterioration += 1;
                         MeowManager.Instance.PlayRandomPurr();
                         Vibration.Vibrate(MeowManager.Instance.ObtainPurrLength());
                         //Handheld.Vibrate();
                         lerpCamera = true;
-                        SceneManager.LoadScene(3);
+                        FadeAdjustment.Instance.TriggerFading(GameManager.Instance.fadePoint);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         // some audio and some animation pls
                         // found the fleas!
                     }

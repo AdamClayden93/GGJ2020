@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,8 +17,8 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
-        //if (Input.GetKeyDown(KeyCode.A))
+        //if (Input.touchCount > 0)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             //Touch touch = Input.GetTouch(0);
             if (beginGame == false)
@@ -38,7 +37,7 @@ public class TitleManager : MonoBehaviour
         GameManager.Instance.gameStart = false;
         GameManager.Instance.inPhaseOne = true;
         GameManager.Instance.freezeControls = false;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 }

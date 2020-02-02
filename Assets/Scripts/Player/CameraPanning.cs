@@ -37,7 +37,7 @@ public class CameraPanning : MonoBehaviour
             }
             else
             {
-                angle.x = (-Input.acceleration.y * rotLimits.x);
+                angle.x = (Input.acceleration.y * rotLimits.x);
                 //angle.x = (Input.GetAxis("Vertical") * rotLimits.x);
                 //print(angle.x);
                 if (angle.x < 0)

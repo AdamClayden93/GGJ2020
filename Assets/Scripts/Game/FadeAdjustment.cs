@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FadeAdjustment : MonoBehaviour
+public class FadeAdjustment : MotherSingleton<FadeAdjustment>
 {
     Animator fadeSprite;
-
+    private readonly string fade1 = "Fade1";
+    private readonly string fade2 = "Fade2";
+    private readonly string fade3 = "Fade3";
+    private readonly string fade4 = "Fade4";
+    private readonly string fade5 = "Fade5";
+    private readonly string fade6 = "Fade6";
     public void FadeToBlack()
     {
         fadeSprite.SetTrigger("FadeOut");
@@ -16,25 +19,27 @@ public class FadeAdjustment : MonoBehaviour
         switch(criteria)
         {
             case 0:
-                fadeSprite.SetTrigger("Fade1");
+                fadeSprite.SetTrigger(fade1);
                 break;
             case 1:
-                fadeSprite.SetTrigger("Fade2");
+                fadeSprite.SetTrigger(fade2);
                 break;
             case 2:
-                fadeSprite.SetTrigger("Fade3");
+                fadeSprite.SetTrigger(fade3);
                 break;
             case 3:
-                fadeSprite.SetTrigger("Fade4");
+                fadeSprite.SetTrigger(fade4);
                 break;
             case 4:
-                fadeSprite.SetTrigger("Fade5");
+                fadeSprite.SetTrigger(fade5);
                 break;
             case 5:
-                fadeSprite.SetTrigger("Fade6");
+                fadeSprite.SetTrigger(fade6);
                 break;
             default:
+                GameManager.Instance.fadePoint = -1;
                 break;
         }
+        GameManager.Instance.fadePoint += 1;
     }
 }

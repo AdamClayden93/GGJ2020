@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Cat : MotherSingleton<Cat>
 {
@@ -11,6 +9,7 @@ public class Cat : MotherSingleton<Cat>
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = MeowManager.Instance.cLCat;
         FindNewPosition();
     }
 
