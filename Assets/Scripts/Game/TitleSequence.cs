@@ -6,6 +6,7 @@ public class TitleSequence : MonoBehaviour
     bool canLoadGame;
     Animator titleAnim;
     WaitForSeconds pointthree = new WaitForSeconds(0.5f);
+    private readonly string fadeout = "fadeoutT";
     private void Start()
     {
         titleAnim = GetComponent<Animator>();
@@ -19,7 +20,8 @@ public class TitleSequence : MonoBehaviour
             if (canLoadGame)
             {
                 canLoadGame = false;
-                titleAnim.SetTrigger("fadeoutT");
+                titleAnim.SetTrigger(fadeout);
+                StartCoroutine(LoadNextScene());
             }
         }
         if(Input.GetKeyDown(KeyCode.A))
@@ -27,7 +29,7 @@ public class TitleSequence : MonoBehaviour
             if (canLoadGame)
             {
                 canLoadGame = false;
-                titleAnim.SetTrigger("fadeoutT");
+                titleAnim.SetTrigger(fadeout);
                 StartCoroutine(LoadNextScene());
             }
         }

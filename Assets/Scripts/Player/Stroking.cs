@@ -43,7 +43,7 @@ public class Stroking : MotherSingleton<Stroking>
                         //Handheld.Vibrate();
                         lerpCamera = true;
                         FadeAdjustment.Instance.TriggerFading(GameManager.Instance.fadePoint);
-                        SceneManager.LoadScene(3);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         // some audio and some animation pls
                         // found the fleas!
                     }
