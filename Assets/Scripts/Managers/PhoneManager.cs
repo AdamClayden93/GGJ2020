@@ -70,7 +70,7 @@ public class PhoneManager : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
             {
-                Vibration.Vibrate(100);
+                //Vibration.Vibrate(100);
             }
             /*if (GameManager.Instance.inPhaseOne && touch.phase == TouchPhase.Began)
             {
