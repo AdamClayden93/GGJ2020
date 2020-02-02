@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    const string ANIMATIONTRIGGER = "CatHeadTransition";
     bool beginGame;
     WaitForSeconds twopointfive = new WaitForSeconds(2.5f);
     public Animator titleCatAnim;
@@ -23,7 +24,7 @@ public class TitleManager : MonoBehaviour
             //Touch touch = Input.GetTouch(0);
             if (beginGame == false)
             {
-                Debug.Log("yes");
+                MeowManager.Instance.PlayStartMeow();
                 beginGame = true;
                 StartCoroutine(StartGame());
             }
@@ -32,7 +33,7 @@ public class TitleManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        titleCatAnim.SetTrigger("CatHeadTransition");
+        titleCatAnim.SetTrigger(ANIMATIONTRIGGER);
         yield return twopointfive;
         GameManager.Instance.gameStart = false;
         GameManager.Instance.inPhaseOne = true;

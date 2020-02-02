@@ -18,11 +18,6 @@ public class Stroking : MotherSingleton<Stroking>
     // Update is called once per frame
     void Update()
     {
-        print(Input.mousePosition + " cat: " + GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position));
-        if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
-        {
-            print("HI");
-        }
         if (!lerpCamera)
         {
             //if (GameManager.Instance.inPhaseTwo)
@@ -34,16 +29,11 @@ public class Stroking : MotherSingleton<Stroking>
                 {
                     if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
                     {
-                        Handheld.Vibrate();
+                        MeowManager.Instance.PlayRandomPurr();
+                        Vibration.Vibrate(MeowManager.Instance.ObtainPurrLength());
+                        //Handheld.Vibrate();
                         lerpCamera = true;
                         SceneManager.LoadScene(3);
-                        if (touch.phase == TouchPhase.Ended)
-                        {
-                            SceneManager.LoadScene(3);
-                            
-                            //40.69
-                            // START FLEA GAME!
-                        }
                         // some audio and some animation pls
                         // found the fleas!
                     }
