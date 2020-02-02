@@ -70,7 +70,7 @@ public class Stroking : MotherSingleton<Stroking>
     }
     IEnumerator FadeOutGame()
     {
-        newgameplus = true;
+        GameManager.Instance.newgameplus = true;
         yield return fourSec;
         panelAnim.SetTrigger("Fadethepanel");
         yield return new WaitForSeconds(1.0f);
