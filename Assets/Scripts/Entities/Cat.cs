@@ -7,6 +7,7 @@ public class Cat : MotherSingleton<Cat>
     public Transform[] fleabagLocations;
     public int fleabagIndex;
     Vector3 catPos;
+    public ParticleSystem hearts;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class Cat : MotherSingleton<Cat>
         }
         if(onScreen && Time.frameCount % 250 == 0)
         {
+            hearts.Play();
             //play hearts animation
         }
     }
