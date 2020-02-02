@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -151,6 +152,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -201,6 +203,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &432968300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 554973855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &554973855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,22 +264,22 @@ PrefabInstance:
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5591181
+      value: -0.000105397325
       objectReference: {fileID: 0}
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.014147927
+      value: 0.009842913
       objectReference: {fileID: 0}
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.014381386
+      value: -0.0107068075
       objectReference: {fileID: 0}
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8288426
+      value: 0.99989426
       objectReference: {fileID: 0}
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
@@ -281,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 68.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1268554526818932789, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
@@ -308,6 +316,12 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1268554526818932790, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc7e8f122829a4848987910b151f3943,
+        type: 3}
     - target: {fileID: 1268554526818932791, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
         type: 3}
       propertyPath: m_Name
@@ -396,13 +410,38 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874602228}
-  m_LocalRotation: {x: 0.34767208, y: 0, z: 0, w: 0.93761617}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10.13, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.69, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1095613915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268554526818932791, guid: a6dffc7db5fa8aa44bd75fcf02408fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 554973855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1095613918
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095613915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cddbf7deeca287e46867d719356b48ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1482694933
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +453,7 @@ GameObject:
   - component: {fileID: 1482694935}
   - component: {fileID: 1482694934}
   - component: {fileID: 1482694936}
+  - component: {fileID: 1482694937}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -436,7 +476,8 @@ MonoBehaviour:
   spawningAreaCentre: {x: 0, y: 0}
   spawningArea: {x: 10, y: 10}
   numFleaSpawnRange: {x: 10, y: 20}
-  fleaPrefabs: []
+  fleaPrefabs:
+  - {fileID: 7141711911983554960, guid: cd1b8b976ef27c442bd6bea6f0535ebf, type: 3}
 --- !u!4 &1482694935
 Transform:
   m_ObjectHideFlags: 0
@@ -464,6 +505,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitSeconds: 1
+--- !u!114 &1482694937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482694933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b66c3da9ffec344a65d3abc7289b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cat: {fileID: 432968300}
+  mainCam: {fileID: 874602230}
 --- !u!1 &2072954262
 GameObject:
   m_ObjectHideFlags: 0
