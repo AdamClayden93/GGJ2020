@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stroking : MotherSingleton<Stroking>
 {
+    AudioClip[] purrArray = new AudioClip[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -13,15 +14,20 @@ public class Stroking : MotherSingleton<Stroking>
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.inPhaseTwo)
+        print(Input.mousePosition + " cat: " + GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position));
+        if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
         {
+            print("HI");
+        }
+            //if (GameManager.Instance.inPhaseTwo)
+            //{
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    if (Vector2.Distance(GOReferences.Instance.mainCam.ScreenToWorldPoint(touch.position), Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position) < 2f)
-                    {
+                    if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
+                { 
                         Handheld.Vibrate();
                         if(touch.phase == TouchPhase.Ended)
                         {
@@ -43,7 +49,7 @@ public class Stroking : MotherSingleton<Stroking>
                     // found the fleas!
                 }*/
             //}
-        }
+        //}
         
     }
 }

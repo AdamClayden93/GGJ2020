@@ -12,7 +12,7 @@ public class CameraPanning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotSpeed = 10;
+        rotSpeed = 15;
         rotLimits.x = 34;
         rotLimits.y = 10;
         restingState = (-Input.acceleration.y * rotLimits.x);

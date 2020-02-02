@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: closer
+    uniqueID: 2340791547
+    locked: 0

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class TitleManager : MonoBehaviour
 {
     bool beginGame;
-    WaitForSeconds threeSec = new WaitForSeconds(3.0f);
-    Animator titleCatAnim;
+    WaitForSeconds twopointfive = new WaitForSeconds(2.5f);
+    public Animator titleCatAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +18,12 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         if (Input.touchCount > 0)
+        //if (Input.GetKeyDown(KeyCode.A))
         {
-            Touch touch = Input.GetTouch(0);
-            if (beginGame == false && touch.phase == TouchPhase.Stationary)
+            //Touch touch = Input.GetTouch(0);
+            if (beginGame == false)
             {
+                Debug.Log("yes");
                 beginGame = true;
                 StartCoroutine(StartGame());
             }
@@ -31,7 +33,10 @@ public class TitleManager : MonoBehaviour
     IEnumerator StartGame()
     {
         titleCatAnim.SetTrigger("CatHeadTransition");
-        yield return threeSec;
+        yield return twopointfive;
+        GameManager.Instance.gameStart = false;
+        GameManager.Instance.inPhaseOne = true;
+        GameManager.Instance.freezeControls = false;
         SceneManager.LoadScene(2);
 
     }

@@ -68,14 +68,10 @@ public class PhoneManager : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if(GameManager.Instance.gameStart)
+            if (touch.phase == TouchPhase.Began)
             {
-                
+                Vibration.Vibrate(100);
             }
-            /*if (touch.phase == TouchPhase.Began)
-            {
-                Vibration.Vibrate(20);
-            }*/
             /*if (GameManager.Instance.inPhaseOne && touch.phase == TouchPhase.Began)
             {
                 GameManager.Instance.inPhaseOne = false;
