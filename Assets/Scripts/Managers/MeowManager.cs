@@ -7,7 +7,6 @@ public class MeowManager : MotherSingleton<MeowManager>
     public Sprite[] tufts;
     public Sprite[] layingCat;
     public Sprite[] halfCats;
-    public Sprite[] deadCats;
     public AudioClip[] meows;
     public AudioClip[] purrs;
 
@@ -21,6 +20,7 @@ public class MeowManager : MotherSingleton<MeowManager>
     void Start()
     {
         myAsource = GetComponent<AudioSource>();
+        SelectNewCat();
     }
 
     public void SelectNewCat()
@@ -30,7 +30,6 @@ public class MeowManager : MotherSingleton<MeowManager>
         cTuft = tufts[meowIndex];
         cLCat = layingCat[meowIndex];
         chCat = halfCats[meowIndex];
-        cdCat = deadCats[meowIndex];
     }
 
     public void PlayStartMeow()

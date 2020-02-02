@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Stroking : MotherSingleton<Stroking>
 {
+    WaitForSeconds fourSec = new WaitForSeconds(4.0f);
     AudioClip[] purrArray = new AudioClip[3];
     public bool lerpCamera;
+    public Animator panelAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,7 @@ public class Stroking : MotherSingleton<Stroking>
                 break;
             case 4:
                 MeowManager.Instance.cLCat = MeowManager.Instance.cdCat;
+                GameManager.Instance.forCoroutine = true;
                 break;
             default:
                 MeowManager.Instance.cLCat = MeowManager.Instance.cLCat;
@@ -26,46 +30,51 @@ public class Stroking : MotherSingleton<Stroking>
     // Update is called once per frame
     void Update()
     {
-        if (!lerpCamera)
+        if (GameManager.Instance.catDeterioration < 4)
         {
-            //if (GameManager.Instance.inPhaseTwo)
-            //{
-            if (Input.touchCount > 0)
+            if (!lerpCamera)
             {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Moved)
+                //if (GameManager.Instance.inPhaseTwo)
+                //{
+                if (Input.touchCount > 0)
                 {
-                    if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
+                    Touch touch = Input.GetTouch(0);
+                    if (touch.phase == TouchPhase.Moved)
                     {
-                        GameManager.Instance.catDeterioration += 1;
-                        MeowManager.Instance.PlayRandomPurr();
-                        Vibration.Vibrate(MeowManager.Instance.ObtainPurrLength());
-                        //Handheld.Vibrate();
-                        lerpCamera = true;
-                        FadeAdjustment.Instance.TriggerFading(GameManager.Instance.fadePoint);
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                        // some audio and some animation pls
-                        // found the fleas!
+                        if (Vector2.Distance(Input.mousePosition, GOReferences.Instance.mainCam.WorldToScreenPoint(Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position)) < 40f)
+                        {
+                            GameManager.Instance.catDeterioration += 1;
+                            MeowManager.Instance.PlayRandomPurr();
+                            Vibration.Vibrate(MeowManager.Instance.ObtainPurrLength());
+                            //Handheld.Vibrate();
+                            lerpCamera = true;
+                            FadeAdjustment.Instance.TriggerFading(GameManager.Instance.fadePoint);
+                            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                            // some audio and some animation pls
+                            // found the fleas!
+                        }
                     }
                 }
             }
-        }
-        else
+        }else
         {
-            //GOReferences.Instance.mainCam.transform.rotation = Quaternion.Lerp(GOReferences.Instance.mainCam.transform.rotation, Quaternion.Euler(newPos), Time.deltaTime * 5);
-        }
-        //if (touch.phase == TouchPhase.Moved)
-        //{
-        /*print("mouse:" + GOReferences.Instance.mainCam.ScreenToWorldPoint(Input.mousePosition) + " cat: " + Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position);
-            if (Vector2.Distance(GOReferences.Instance.mainCam.ScreenToWorldPoint(Input.), Cat.Instance.fleabagLocations[Cat.Instance.fleabagIndex].position) < 2f)
+            GameManager.Instance.freezeControls = true;
+            GOReferences.Instance.mainCam.transform.LookAt(GOReferences.Instance.cat);
+            if(GameManager.Instance.forCoroutine)
             {
-            print("NICE");
-                Handheld.Vibrate();
-                // some audio and some animation pls
-                // found the fleas!
-            }*/
-        //}
-        //}
+                GameManager.Instance.forCoroutine = false;
+                StartCoroutine(FadeOutGame());
+            }
+        }
 
     }
+    IEnumerator FadeOutGame()
+    {
+        newgameplus = true;
+        yield return fourSec;
+        panelAnim.SetTrigger("Fadethepanel");
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(1);
+    }
+
 }

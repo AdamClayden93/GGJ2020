@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SpawningManager : MonoBehaviour
 {
     private static SpawningManager instance;
@@ -42,7 +41,8 @@ public class SpawningManager : MonoBehaviour
     {
         if(fleas.Count == 0)
         {
-            Debug.Log("game ended");
+            SceneManager.LoadScene(3);
+            //Debug.Log("game ended");
         }
     }
 

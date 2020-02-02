@@ -9,16 +9,17 @@ public class TitleSequence : MonoBehaviour
     private readonly string fadeout = "fadeoutT";
     private void Start()
     {
+        GameManager.Instance.ResetBools();
         titleAnim = GetComponent<Animator>();
         canLoadGame = true;
+        if (GameManager.Instance.newgameplus)
+        {
+            MeowManager.Instance.SelectNewCat();
+        }
     }
     // Update is called once per frame
     void Update()
     {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                FadeAdjustment.Instance.TriggerFading(GameManager.Instance.fadePoint);
-            }
         if (Input.touchCount > 0)
         {
             if (canLoadGame)
@@ -28,7 +29,7 @@ public class TitleSequence : MonoBehaviour
                 StartCoroutine(LoadNextScene());
             }
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        /*if(Input.GetKeyDown(KeyCode.A))
         {
             if (canLoadGame)
             {
@@ -36,7 +37,7 @@ public class TitleSequence : MonoBehaviour
                 titleAnim.SetTrigger(fadeout);
                 StartCoroutine(LoadNextScene());
             }
-        }
+        }*/
     }
 
     IEnumerator LoadNextScene()

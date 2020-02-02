@@ -17,8 +17,8 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.touchCount > 0)
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.touchCount > 0)
+        //if (Input.GetKeyDown(KeyCode.A))
         {
             //Touch touch = Input.GetTouch(0);
             if (beginGame == false)
