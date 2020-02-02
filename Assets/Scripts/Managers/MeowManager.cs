@@ -7,6 +7,11 @@ public class MeowManager : MotherSingleton<MeowManager>
     public Sprite[] tufts;
     public Sprite[] layingCat;
     public Sprite[] halfCats;
+<<<<<<< HEAD
+=======
+    public Sprite[] deadCats;
+    public string CatName;
+>>>>>>> 67328646b9bcd9b5723d0579eb5747aa1f12989e
     public AudioClip[] meows;
     public AudioClip[] purrs;
 
